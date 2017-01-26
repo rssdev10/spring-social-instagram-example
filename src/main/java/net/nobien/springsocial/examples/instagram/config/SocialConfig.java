@@ -56,8 +56,11 @@ public class SocialConfig {
 	@Bean
 	public ConnectionFactoryLocator connectionFactoryLocator() {
 		ConnectionFactoryRegistry registry = new ConnectionFactoryRegistry();
-		registry.addConnectionFactory(new InstagramConnectionFactory(environment.getProperty("instagram.clientId"),
-				environment.getProperty("instagram.clientSecret")));
+		InstagramConnectionFactory instagram = new InstagramConnectionFactory(
+				environment.getProperty("instagram.clientId"),
+				environment.getProperty("instagram.clientSecret"));
+		instagram.setScope("basic public_content");
+		registry.addConnectionFactory(instagram);
 		return registry;
 	}
 
