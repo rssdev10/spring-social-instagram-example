@@ -18,11 +18,14 @@ package net.nobien.springsocial.examples.instagram;
 import javax.inject.Inject;
 
 import org.springframework.social.instagram.api.Instagram;
+import org.springframework.social.instagram.api.Media;
 import org.springframework.social.instagram.api.PagedMediaList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -36,9 +39,12 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
-	    PagedMediaList media = instagram.userOperations().getFeed();
+		PagedMediaList media = instagram.userOperations().getRecentMedia();
 		model.addAttribute("media", media.getList());
+
+		List<Media> mediaList = instagram.mediaOperations().search(52.51550818, 13.38212866);
+		model.addAttribute("media_public", mediaList);
+
 		return "home";
 	}
-
 }

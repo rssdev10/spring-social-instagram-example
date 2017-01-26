@@ -8,11 +8,23 @@
 	<ul>
 		<li><a href="<c:url value="/signout" />">Sign Out</a></li>
 	</ul>
+
+	<div style="overflow: auto; width: 40%; float: left;">
 	<h3>Your media feed</h3>
 	<ul>
 	<c:forEach items="${media}" var="item">
 		<p><img src="${item.images.low_resolution.url}"/></p>
 	</c:forEach>
-	</ul>	
+	</ul>
+	</div>
+
+	<div style="overflow: auto; width: 40%; float: right;">
+	<h3>Public media feed</h3>
+	<ul>
+	<c:forEach items="${media_public}" var="item">
+		<p><img src="${item.images.low_resolution.url}"/></p>
+	</c:forEach>
+	</ul>
+	</div>
 	</body>
 </html>
