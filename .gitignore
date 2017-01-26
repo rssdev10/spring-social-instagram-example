@@ -9,3 +9,10 @@ spring-social-core/src/test/java/exploration
 .settings
 target
 bin
+
+.idea
+*.iml
+*.iws
+*.ipr
+*~
+*.swp
